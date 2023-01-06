@@ -256,10 +256,10 @@ class _GenericRangeSlider(_GenericSlider[Tuple], Generic[_T]):
             r_bar.setLeft(hdl_low.center().x())
             r_bar.setRight(hdl_high.center().x())
             with open('posicionesNormales.txt', 'w') as f:
-                    print('top' + str(r_bar.center().y() - thickness / 2 + offset+' '
+                    print('top' + str(r_bar.center().y() - thickness / 2 + offset)+' '
                     +'height'+ str(thickness)+' '+ 
                     'left'+str(hdl_low.center().x())+ ' ' 
-                    'right'+ str(hdl_high.center().x())), file=f)  # Python 3.x
+                    'right'+ str(hdl_high.center().x()), file=f)  # Python 3.x
         else:
             r_bar.setLeft(r_bar.center().x() - thickness / 2 + offset)
             r_bar.setWidth(thickness)
