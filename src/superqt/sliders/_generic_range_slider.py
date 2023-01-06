@@ -271,9 +271,13 @@ class _GenericRangeSlider(_GenericSlider[Tuple], Generic[_T]):
         if isinstance(brush, QtGui.QGradient):
             brush.setStart(r_bar.topLeft())
             brush.setFinalStop(r_bar.bottomRight())
-                painter.setPen(self._style.pen(opt))
+        painter.setPen(self._style.pen(opt))
         painter.setBrush(brush)
-        painter.drawRect(r_bar)
+        for i in range(len(self._optSliderPositions)-1):
+            if(i%2!=0):
+                with open('penesypollasgordos.txt', 'w') as f:
+                    print(self._handleRect(i, opt).x()+' '+ self._handleRect(i, opt).y()+' '+ self._handleRect(i+1, opt).x()+ ' ' + self._handleRect(i+1, opt).y(), file=f)  # Python 3.x
+                painter.drawRect(QRectF(QPointF(self._handleRect(i, opt).x(), self._handleRect(i, opt).y()), QPointF(self._handleRect(i+1, opt).x(), self._handleRect(i+1, opt).y())))
 
     def _draw_handle(self, painter: QStylePainter, opt: QStyleOptionSlider):
         if self._should_draw_bar:
