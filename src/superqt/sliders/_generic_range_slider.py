@@ -255,6 +255,11 @@ class _GenericRangeSlider(_GenericSlider[Tuple], Generic[_T]):
             r_bar.setHeight(thickness)
             r_bar.setLeft(hdl_low.center().x())
             r_bar.setRight(hdl_high.center().x())
+            with open('posicionesNormales.txt', 'w') as f:
+                    print('top' + str(r_bar.center().y() - thickness / 2 + offset+' '
+                    +'height'+ str(thickness)+' '+ 
+                    'left'+str(hdl_low.center().x())+ ' ' 
+                    'right'+ str(hdl_high.center().x(), file=f)  # Python 3.x
         else:
             r_bar.setLeft(r_bar.center().x() - thickness / 2 + offset)
             r_bar.setWidth(thickness)
@@ -274,7 +279,6 @@ class _GenericRangeSlider(_GenericSlider[Tuple], Generic[_T]):
         painter.setPen(self._style.pen(opt))
         painter.setBrush(brush)
         painter.drawRect(r_bar)
-
 
     def _draw_handle(self, painter: QStylePainter, opt: QStyleOptionSlider):
         if self._should_draw_bar:
