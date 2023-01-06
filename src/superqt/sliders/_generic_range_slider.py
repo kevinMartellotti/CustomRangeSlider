@@ -275,7 +275,7 @@ class _GenericRangeSlider(_GenericSlider[Tuple], Generic[_T]):
         painter.setBrush(brush)
         for i in range(len(self._optSliderPositions)-1):
             if(i%2!=0):
-                painter.drawRect(QRectF(QPointF(self._optSliderPositions[i], 0), QPointF(self._optSliderPositions[i+1], 0)))
+                painter.drawRect(QRectF(QPointF(self._optSliderPositions[i], self._optSliderPositions[i]), QPointF(self._optSliderPositions[i+1], self._optSliderPositions[i+1])))
 
     def _draw_handle(self, painter: QStylePainter, opt: QStyleOptionSlider):
         if self._should_draw_bar:
