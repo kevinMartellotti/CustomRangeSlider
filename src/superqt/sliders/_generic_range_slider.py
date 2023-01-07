@@ -282,7 +282,7 @@ class _GenericRangeSlider(_GenericSlider[Tuple], Generic[_T]):
             if(i%2==0):
                 with open('salidaCustom.txt', 'w') as f:
                     print(str(self._handleRect(i, opt).x())+' '+ str(self._handleRect(i, opt).y())+' '+ str(self._handleRect(i+1, opt).x())+ ' ' + str(self._handleRect(i+1, opt).y()), file=f)
-                painter.drawRect(QRectF(QPointF(self._handleRect(i, opt).x(), self._handleRect(i, opt).y()), QPointF(self._handleRect(i+1, opt).x(), self._handleRect(i+1, opt).y())))
+                painter.drawRect(QRectF(QPointF(self._handleRect(i, opt).x(), self._handleRect(i, opt).y()), QPointF(self._handleRect(i+1, opt).x(), self._handleRect(i+1, opt).y()+4)))
 
     def _draw_handle(self, painter: QStylePainter, opt: QStyleOptionSlider):
         if self._should_draw_bar:
