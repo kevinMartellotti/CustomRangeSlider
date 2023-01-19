@@ -260,6 +260,7 @@ def parse_color(color: str, default_attr) -> QColor | QGradient:
 
 
 def update_styles_from_stylesheet(obj: _GenericRangeSlider):
+    x = 4 + 4
     #qss: str = obj.styleSheet()
 
     #parent = obj.parent()
