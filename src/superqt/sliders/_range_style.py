@@ -260,32 +260,32 @@ def parse_color(color: str, default_attr) -> QColor | QGradient:
 
 
 def update_styles_from_stylesheet(obj: _GenericRangeSlider):
+    #qss: str = obj.styleSheet()
 
-    qss: str = obj.styleSheet()
-
-    parent = obj.parent()
-    while parent is not None:
-        qss = parent.styleSheet() + qss
-        parent = parent.parent()
-    qss = QApplication.instance().styleSheet() + qss
-    if not qss:
-        return
-    if MONTEREY_SLIDER_STYLES_FIX in qss:
-        qss = qss.replace(MONTEREY_SLIDER_STYLES_FIX, "")
-        obj._style._macpatch = True
-    else:
-        obj._style._macpatch = False
+    #parent = obj.parent()
+    #while parent is not None:
+    #    qss = parent.styleSheet() + qss
+    #    parent = parent.parent()
+    #qss = QApplication.instance().styleSheet() + qss
+    #if not qss:
+    #    return
+    #if MONTEREY_SLIDER_STYLES_FIX in qss:
+    #    qss = qss.replace(MONTEREY_SLIDER_STYLES_FIX, "")
+    #    obj._style._macpatch = True
+    #else:
+    #    obj._style._macpatch = False
 
     # Find bar height/width
-    for orient, dim in (("horizontal", "height"), ("vertical", "width")):
-        match = re.search(rf"Slider::groove:{orient}\s*{{\s*([^}}]+)}}", qss, re.S)
-        if match:
-            for line in reversed(match.groups()[0].splitlines()):
-                bgrd = re.search(rf"{dim}\s*:\s*(\d+)", line)
-                if bgrd:
-                    thickness = float(bgrd.groups()[-1])
-                    setattr(obj._style, f"{orient}_thickness", thickness)
-                    obj._style.has_stylesheet = True
+    #for orient, dim in (("horizontal", "height"), ("vertical", "width")):
+    #    match = re.search(rf"Slider::groove:{orient}\s*{{\s*([^}}]+)}}", qss, re.S)
+    #    if match:
+    #        for line in reversed(match.groups()[0].splitlines()):
+    #            bgrd = re.search(rf"{dim}\s*:\s*(\d+)", line)
+    #            if bgrd:
+    #                thickness = float(bgrd.groups()[-1])
+    #                setattr(obj._style, f"{orient}_thickness", thickness)
+    #                obj._style.has_stylesheet = True
+
 
 
 # a fix for https://bugreports.qt.io/browse/QTBUG-98093
