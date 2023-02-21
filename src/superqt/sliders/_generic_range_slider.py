@@ -275,8 +275,6 @@ class _GenericRangeSlider(_GenericSlider[Tuple], Generic[_T]):
         painter.setBrush(brush)
         for i in range(len(self._optSliderPositions)-1):
             if(i%2==0):
-                with open('salidaCustom.txt', 'w') as f:
-                    print(str(self._handleRect(i, opt).x())+' '+ str(self._handleRect(i, opt).y())+' '+ str(self._handleRect(i+1, opt).x())+ ' ' + str(self._handleRect(i+1, opt).y()), file=f)
                 painter.drawRect(QRectF(QPointF(self._handleRect(i, opt).x(), self._handleRect(i, opt).y()-24), QPointF(self._handleRect(i+1, opt).x(), self._handleRect(i+1, opt).y()+24)))
 
     def _draw_handle(self, painter: QStylePainter, opt: QStyleOptionSlider):
